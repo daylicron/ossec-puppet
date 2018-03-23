@@ -201,4 +201,3 @@ class ossec::client(
     }
   }
 }
-}
