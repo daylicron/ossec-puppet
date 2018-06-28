@@ -1,13 +1,22 @@
 #Export agent key
 class ossec::export_agent_key($max_clients, $agent_name, $agent_ip_address) {
+
+  # Babiel special:
+  # Erzeugt eine agent_id. tauscht den Buchstaben
+  # im Hostnamen gegen eine 1 (s) oder eine 2(n) aus.
+  if $::hostname =~ /^s/ {
+    $aid = regsubstr($::hostname, '^s(.{3,6})^', '1\1')
+  } else {
+    $aid = regsubstr($::hostname, '^n(.{3,6})^', '2\1')
+  }
   ossec::agentkey{ "ossec_agent_${agent_name}_client":
-    agent_id         => fqdn_rand($max_clients, $::fqdn),
+    agent_id         => $aid,
     agent_name       => $agent_name,
     agent_ip_address => $agent_ip_address,
   }
 
   @@ossec::agentkey{ "ossec_agent_${agent_name}_server":
-    agent_id         => fqdn_rand($max_clients, $::fqdn),
+    agent_id         => $aid,
     agent_name       => $agent_name,
     agent_ip_address => $agent_ip_address
   }
