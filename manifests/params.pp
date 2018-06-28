@@ -3,30 +3,30 @@ class ossec::params {
   case $::kernel {
     'Linux': {
 
-      $config_file = '/var/ossec/etc/ossec.conf'
       $config_mode = '0440'
       $config_owner = 'root'
       $config_group = 'ossec'
 
-      $keys_file = '/var/ossec/etc/client.keys'
       $keys_mode = '0440'
       $keys_owner = 'root'
       $keys_group = 'ossec'
 
-      $processlist_file = '/var/ossec/bin/.process_list'
       $processlist_mode = '0440'
       $processlist_owner = 'root'
       $processlist_group = 'ossec'
 
-      $rootkit_files = '/var/ossec/etc/shared/rootkit_files.txt'
-      $rootkit_trojans = '/var/ossec/etc/shared/rootkit_trojans.txt'
 
       $manage_firewall = false
 
       case $::osfamily {
         'Debian': {
 
+          $config_file              = '/var/ossec/etc/ossec.conf'
+          $keys_file                = '/var/ossec/etc/client.keys'
           $agent_service            = 'ossec'
+          $processlist_file         = '/var/ossec/bin/.process_list'
+          $rootkit_files            = '/var/ossec/etc/shared/rootkit_files.txt'
+          $rootkit_trojans          = '/var/ossec/etc/shared/rootkit_trojans.txt'
           $agent_package            = 'ossec-hids-agent'
           $service_has_status       = false
           $agent_source_url         = undef
@@ -56,10 +56,16 @@ class ossec::params {
           }
 
         }
-        'Linux', 'RedHat', 'Suse': {
+        'Linux', 'RedHat': {
 
-          $agent_service            = 'ossec-hids-agent'
-          $agent_package            = 'ossec-hids-agent'
+          $config_file              = '/var/ossec/etc/ossec.conf'
+          $keys_file                = '/var/ossec/etc/client.keys'
+          $agent_service            = 'ossec'
+          $processlist_file         = '/var/ossec/bin/.process_list'
+          $rootkit_files            = '/var/ossec/etc/shared/rootkit_files.txt'
+          $rootkit_trojans          = '/var/ossec/etc/shared/rootkit_trojans.txt'
+          $agent_service            = 'ossec-hids'
+          $agent_package            = 'ossec-hids-client'
           $server_service           = 'ossec-hids'
           $server_package           = 'ossec-hids'
           $agent_source_url         = undef
@@ -75,6 +81,33 @@ class ossec::params {
             '/var/log/yum.log'          => 'syslog',
             '/var/log/httpd/access_log' => 'apache',
             '/var/log/httpd/error_log'  => 'apache'
+          }
+
+        }
+        'Suse': {
+
+          $config_file              = '/var/lib/ossec/etc/ossec.conf'
+          $keys_file                = '/var/lib/ossec/etc/client.keys'
+          $agent_service            = 'ossec'
+          $processlist_file         = '/var/lib/ossec/bin/.process_list'
+          $rootkit_files            = '/var/lib/ossec/etc/shared/rootkit_files.txt'
+          $rootkit_trojans          = '/var/lib/ossec/etc/shared/rootkit_trojans.txt'
+          $agent_service            = 'ossec-hids'
+          $agent_package            = 'ossec-hids-client'
+          $server_service           = 'ossec-hids'
+          $server_package           = 'ossec-hids-server'
+          $agent_source_url         = undef
+          $agent_chocolatey_enabled = undef
+          $agent_download_url       = undef
+          $service_has_status       = true
+          $ossec_service_provider   = 'redhat'
+
+          $default_local_files = {
+            '/var/log/messages'           => 'syslog',
+            '/var/log/mail'               => 'syslog',
+            '/var/log/zypper.log'         => 'syslog',
+            '/var/log/apache2/access_log' => 'apache',
+            '/var/log/apache2/error_log'  => 'apache'
           }
 
         }
