@@ -60,7 +60,6 @@ class ossec::params {
 
           $config_file              = '/var/ossec/etc/ossec.conf'
           $keys_file                = '/var/ossec/etc/client.keys'
-          $agent_service            = 'ossec'
           $processlist_file         = '/var/ossec/bin/.process_list'
           $rootkit_files            = '/var/ossec/etc/shared/rootkit_files.txt'
           $rootkit_trojans          = '/var/ossec/etc/shared/rootkit_trojans.txt'
@@ -88,7 +87,6 @@ class ossec::params {
 
           $config_file              = '/var/lib/ossec/etc/ossec.conf'
           $keys_file                = '/var/lib/ossec/etc/client.keys'
-          $agent_service            = 'ossec'
           $processlist_file         = '/var/lib/ossec/bin/.process_list'
           $rootkit_files            = '/var/lib/ossec/etc/shared/rootkit_files.txt'
           $rootkit_trojans          = '/var/lib/ossec/etc/shared/rootkit_trojans.txt'
