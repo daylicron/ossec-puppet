@@ -63,8 +63,8 @@ class ossec::params {
           $processlist_file         = '/var/ossec/bin/.process_list'
           $rootkit_files            = '/var/ossec/etc/shared/rootkit_files.txt'
           $rootkit_trojans          = '/var/ossec/etc/shared/rootkit_trojans.txt'
-          $agent_service            = 'ossec-hids'
-          $agent_package            = 'ossec-hids-client'
+          $agent_service            = 'ossec-hids-agent'
+          $agent_package            = 'ossec-hids-agent'
           $server_service           = 'ossec-hids'
           $server_package           = 'ossec-hids'
           $agent_source_url         = undef
