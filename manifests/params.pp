@@ -22,6 +22,7 @@ class ossec::params {
         'Debian': {
 
           $config_file              = '/var/ossec/etc/ossec.conf'
+          $logdir                   = '/var/ossec/logs'
           $keys_file                = '/var/ossec/etc/client.keys'
           $agent_service            = 'ossec'
           $processlist_file         = '/var/ossec/bin/.process_list'
@@ -59,6 +60,7 @@ class ossec::params {
         'Linux', 'RedHat': {
 
           $config_file              = '/var/ossec/etc/ossec.conf'
+          $logdir                   = '/var/ossec/logs'
           $keys_file                = '/var/ossec/etc/client.keys'
           $processlist_file         = '/var/ossec/bin/.process_list'
           $rootkit_files            = '/var/ossec/etc/shared/rootkit_files.txt'
@@ -86,6 +88,7 @@ class ossec::params {
         'Suse': {
 
           $config_file              = '/var/lib/ossec/etc/ossec.conf'
+          $logdir                   = '/var/lib/ossec/logs'
           $keys_file                = '/var/lib/ossec/etc/client.keys'
           $processlist_file         = '/var/lib/ossec/bin/.process_list'
           $rootkit_files            = '/var/lib/ossec/etc/shared/rootkit_files.txt'
