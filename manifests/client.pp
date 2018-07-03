@@ -170,7 +170,7 @@ class ossec::client(
   if ($::kernel == 'Linux') {
     # Set log permissions properly to fix
     # https://github.com/djjudas21/puppet-ossec/issues/20
-    file { $ossec::params::logdir
+    file { $ossec::params::logdir:
       ensure  => directory,
       require => Package[$agent_package_name],
       owner   => 'ossec',
