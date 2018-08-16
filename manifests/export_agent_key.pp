@@ -7,7 +7,7 @@ class ossec::export_agent_key($max_clients, $agent_name, $agent_ip_address) {
   if $::hostname =~ /^s/ {
     $aid = regsubst($::hostname, '^s(\w{3,6})$', '1\1')
   } else {
-    $aid = regsubst($::hostname, '^n(\w{3,6})$', '2\1')
+    $aid = regsubst($::hostname, '^n(\w{2,6})$', '2\1')
   }
   ossec::agentkey{ "ossec_agent_${agent_name}_client":
     agent_id         => $aid,
