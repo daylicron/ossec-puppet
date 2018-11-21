@@ -24,6 +24,8 @@ class ossec::client(
   $agent_download_directory   = 'C:\Temp',
   $agent_package_version      = 'installed',
   $agent_service_name         = $::ossec::params::agent_service,
+  $agent_service_ensure       = running,
+  $agent_service_enable       = true,
   $manage_client_keys         = true,
   $max_clients                = 3000,
   $ar_repeated_offenders      = '',
@@ -104,8 +106,8 @@ class ossec::client(
   }
 
   service { $agent_service_name:
-    ensure    => running,
-    enable    => true,
+    ensure    => $agent_service_ensure,
+    enable    => $agent_service_enable,
     hasstatus => $service_has_status,
     pattern   => $agent_service_name,
     provider  => $ossec_service_provider,
