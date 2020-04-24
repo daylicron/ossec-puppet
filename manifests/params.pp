@@ -48,7 +48,7 @@ class ossec::params {
               $server_service = 'ossec'
               $server_package = 'ossec-hids'
             }
-            /^(jessie|wheezy|stretch|sid)$/: {
+            /^(buster|jessie|wheezy|stretch|sid)$/: {
               $server_service = 'ossec'
               $server_package = 'ossec-hids'
             }
